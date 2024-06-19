@@ -10,6 +10,7 @@ import '../../../constants/app_validators.dart';
 import '../../../main.dart';
 import '../../../providers/home_provider.dart';
 import '../../../widgets/button/app_button.dart';
+import '../../chat_bot/chat_bot.dart';
 import 'answers.dart';
 
 class HomeView extends StatelessWidget {
@@ -74,6 +75,8 @@ class HomeView extends StatelessWidget {
                 ),
                 AppStyles.boxHeightMedium,
                 _saveButton(),
+                AppStyles.boxHeightMedium,
+                _openChatBotButton(),
                 Answers(),
               ],
             ),
@@ -97,4 +100,16 @@ class HomeView extends StatelessWidget {
               text: "Calculate");
         });
   }
+  Widget _openChatBotButton() {
+    return AppButton(
+        onPressed: () async {
+          Navigator.push(
+              navigatorKey.currentContext!,
+              MaterialPageRoute(
+                builder: (context) => ChatBot(),
+              ));
+        },
+        text: "Open Chat Bot");
+  }
+
 }
